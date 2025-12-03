@@ -12,13 +12,13 @@ calcularValorTotal = function () {
     let valorTotal;
 
     //1. Recuperar el nombre del producto como String
-    nombreProducto=document.getElementById("txtProducto").value
+    nombreProducto=recuperarTexto("txtProducto")
     //2. Recuperar el precio como float
-    precioProducto=parseFloat(document.getElementById("txtPrecio").value)
+    precioProducto=parseFloat(recuperarTexto("txtPrecio"))
     //3. Recuperar cantidad como int
-    cantidad=parseInt(document.getElementById("txtCantidad").value)
+    cantidad=parseInt(recuperarTexto("txtCantidad"))
     //4. Recuperar el porcentaje de descuento como int
-    porcentajeDescuento=parseInt(document.getElementById("txtPorcentajeDescuento").value)
+    porcentajeDescuento=parseInt(recuperarTexto("txtPorcentajeDescuento"))
     //4. Invocar a calcularSubtotal y el retorno guardar en la variable valorSubtotal
     valorSubtotal=calcularSubtotal(precioProducto,cantidad)
     // Tomar en cuenta el orden de como pasa los parametos de la funcion y colocar bien
@@ -99,5 +99,14 @@ limpiar = function () {
         Dejar todos los textos de los montos con el valor 0.0
         Si funciona, hacer un commit
      */
+        mostrarTexto("lblSubtotal","")
+            mostrarTexto("lblDescuento","")
+              mostrarTexto("lblValorIVA","")  
+    mostrarTexto("lblResumen","")
+    mostrarTexto("lblTotal","")
+mostrarTextoEnCaja("txtProducto","")
+mostrarTextoEnCaja("txtPrecio","")
+mostrarTextoEnCaja("txtCantidad","")
+mostrarTextoEnCaja("txtPorcentajeDescuento","")
 }
 /* SI TODO FUNCIONA, HACER UN PUSH */
