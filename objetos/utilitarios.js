@@ -14,7 +14,7 @@ mostrarTextoEnCaja = function (idComponente, mensaje) {
     componente = document.getElementById(idComponente);
     componente.value = mensaje;
 }
- 
+
 recuperarTexto = function (idComponente) {
     let componente;
     let valorIngresado;
@@ -34,5 +34,18 @@ recuperarFloat = function (idComponente) {
     let valorFlotante = parseFloat(valorCaja);
     return valorFlotante;
 }
-
-
+ocultarComponente = function (idComponente) {
+    let componente = document.getElementById(idComponente);
+    componente.setAttribute("hidden", "");
+    componente.hidden = true;
+}
+mostrarComponente = function (idComponente) {
+    let componente = document.getElementById(idComponente);
+    componente.removeAttribute("hidden");
+    componente.hidden = false;
+}
+mostrarOpcionEmpleado = function () {
+    ocultarComponente("divRol");
+    ocultarComponente("divResumen");
+    mostrarComponente("divEmpleado");
+}
