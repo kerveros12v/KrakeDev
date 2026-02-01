@@ -69,9 +69,9 @@ guardar = function () {
     let valorApellido = recuperarTexto("txtApellido");
     let valorSueldo = recuperarFloat("txtSueldo");
     let validadoCedula = false;
-     let validadonombre = false;
-      let validadoApellido = false;
-     let validadoSueldo= false;
+    let validadonombre = false;
+    let validadoApellido = false;
+    let validadoSueldo = false;
     let resultado;
     if (longitudTextoValido(valorCedula, 10, 10) == true) {
         for (let i = 0; i < valorCedula.length; i++) {
@@ -94,10 +94,12 @@ guardar = function () {
     else validadoApellido = false;
     if (valorValido(valorSueldo, 400, 5000) == true) validadoSueldo = true;
     else validadoSueldo = false;
-    if (validadoCedula == true &&validadonombre== true&& validadoApellido== true&&validadoSueldo== true) {
+    if (validadoCedula == true && validadonombre == true && validadoApellido == true && validadoSueldo == true) {
         if (esNuevo == true) {
             let empleadoNuevo = { cedula: valorCedula, nombre: valorNombre, apellido: valorApellido, sueldo: valorSueldo }
             resultado = agregarEmpleado(empleadoNuevo);
+        }else{
+            
         }
         if (resultado == true) {
             alert("EMPLEADO GUARDADO CORRECTAMENTE");
@@ -105,8 +107,19 @@ guardar = function () {
         } else {
             alert("YA EXISTE UN EMPLEADO CON LA CEDULA " + valorCedula);
         }
-    }else{
+    } else {
         alert("LOS DATOS INGRESADOS NO CUMPLEN CON LOS PARAMETROS");
     }
 
+}
+ejecutarBusqueda = function () {
+    let valorBusqueda = recuperarTexto('txtBusquedaCedula');
+    let empleadoEncontrado = buscarEmpleado(valorBusqueda)
+    mostrarTextoEnCaja("txtCedula", empleadoEncontrado.cedula);
+    mostrarTextoEnCaja("txtNombre", empleadoEncontrado.nombre);
+    mostrarTextoEnCaja("txtApellido", empleadoEncontrado.apellido);
+    mostrarTextoEnCaja("txtSueldo", empleadoEncontrado.sueldo);
+    habilitarComponente("txtNombre");
+    habilitarComponente("txtApellido");
+    habilitarComponente("txtSueldo");
 }
