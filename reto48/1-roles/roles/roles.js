@@ -38,7 +38,7 @@ mostrarEmpleados = function () {
     document.getElementById("tablaEmpleados").innerHTML = contTabla;
 }
 
-desactivarNuevo=function(){
+ejecutarNuevo=function(){
      habilitarComponente("txtCedula");
     habilitarComponente("txtNombre");
     habilitarComponente("txtApellido");
@@ -101,17 +101,17 @@ guardar = function () {
             resultado = agregarEmpleado(empleadoNuevo);
         }else{
             let tempoempleado=buscarEmpleado(valorCedula);
-            tempoempleado.nombre=validadonombre;
+            tempoempleado.nombre=valorNombre;
             tempoempleado.apellido=valorApellido;
             tempoempleado.sueldo=valorSueldo;
             mostrarOpcionEmpleado();
-            alert("EMPLEADO MODIFICADO EXITOSAMENTE");
+           
         }
         if (resultado == true) {
             alert("EMPLEADO GUARDADO CORRECTAMENTE");
             mostrarEmpleados();
         } else {
-            alert("YA EXISTE UN EMPLEADO CON LA CEDULA " + valorCedula);
+            alert("EMPLEADO MODIFICADO EXITOSAMENTE");
         }
     } else {
         alert("LOS DATOS INGRESADOS NO CUMPLEN CON LOS PARAMETROS");
@@ -128,4 +128,18 @@ ejecutarBusqueda = function () {
     habilitarComponente("txtNombre");
     habilitarComponente("txtApellido");
     habilitarComponente("txtSueldo");
+     habilitarComponente("btnGuardar");
+}
+limpiar=function(){
+     mostrarTextoEnCaja("txtCedula","");
+    mostrarTextoEnCaja("txtNombre", "");
+    mostrarTextoEnCaja("txtApellido", "");
+    mostrarTextoEnCaja("txtSueldo", "");
+    deshabilitarComponente("txtCedula");
+    deshabilitarComponente("txtNombre");
+    deshabilitarComponente("txtApellido");
+    deshabilitarComponente("txtSueldo");
+    deshabilitarComponente("btnGuardar");
+    esNuevo=false;
+
 }
