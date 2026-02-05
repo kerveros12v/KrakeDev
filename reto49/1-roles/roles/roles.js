@@ -148,9 +148,28 @@ buscarPorRol = function () {
     let empleadoEncontrado = buscarEmpleado(valorcedula);
     if (empleadoEncontrado != null) {
         mostrarTexto("infoCedula", empleadoEncontrado.cedula);
-        mostrarTexto("infoNombre", empleadoEncontrado.nombre +empleadoEncontrado.apellido);
+        mostrarTexto("infoNombre", empleadoEncontrado.nombre + empleadoEncontrado.apellido);
         mostrarTexto("infoSueldo", empleadoEncontrado.sueldo);
-    }else{
+    } else {
         alert("Empleado no Encontrado");
     }
+}
+calcularAporteEmpleado = function (sueldo) {
+    return (sueldo / 100) * 9.45;
+}
+calcularValorAPagar = function (sueldoEmpleado, aporteIESS, descuento) {
+    return sueldoEmpleado - aporteIESS - descuento;
+}
+calcularRol = function () {
+    let valorSueldo = recuperarFloatDiv("infoSueldo");
+    let valorDescuento = recuperarFloat("txtDescuentos");
+    let valorAporte = calcularAporteEmpleado(valorSueldo);
+    let valorAPagar=0.0;
+    if (!isNaN(valorDescuento)) {
+        if (valorValido(valorDescuento, 0, valorSueldo)) {
+            valorAPagar=calcularValorAPagar(valorSueldo, valorAporte, valorDescuento);
+        }
+    }
+    mostrarTexto("infoIESS",valorAporte);
+    mostrarTexto("infoPago",valorAPagar);
 }
