@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="notas.css">
+    <script src="script.js"></script>
+    <script src="utilitarios.js"></script>
+    <title>Document</title>
+</head>
+<body>
+ <div class="principal">
+        <div class="logoEscuela">
+            <img src="./imagenes/persona.jpg" width="80%" />
+        </div>
+
+        <div class="contenido">
+            <div class="titulo">
+                PERSONA MAYOR
+            </div>
+
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    NOMBRE
+                </div>
+                <div>
+                    <input type="text" class="cajaTexto" id="txtNombre"/>
+                    <div class="error" id="lblError1"></div>
+                </div>
+            </div>
+           
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    EDAD
+                </div>
+                <div>
+                    <input type="text" class="cajaTexto" id="txtEdad"/>
+                    <div class="error" id="lblError2"></div>
+                </div>
+            </div>
+       
+            <div class="botones">
+                <div class="contenedorBoton">
+                    <input type="button" value="AGREGAR"
+                     class="estiloBoton" onclick="ejecutar();" />
+                      <input type="button" value="LIMPIAR"
+                     class="estiloBoton" onclick="limpiar();" />
+                </div>
+             </div>
+        </div>
+        <div class="areaResultado">
+           
+           
+            <div class="tablaresultado" id="tablaresultado">
+          
+            </div>
+            <div id="lblresultado">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
