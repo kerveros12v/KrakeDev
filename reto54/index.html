@@ -8,7 +8,7 @@
     <script src="utilitarios.js"></script>
     <title>Document</title>
 </head>
-<body>
+<body onload="dibujarTabla();">
  <div class="principal">
         <div class="logoEscuela">
             <img src="./imagenes/persona.jpg" width="80%" />
@@ -43,6 +43,10 @@
                 <div class="contenedorBoton">
                     <input type="button" value="AGREGAR"
                      class="estiloBoton" onclick="ejecutar();" />
+                      <input type="button" value="ENCONTRAR MAYOR"
+                     class="estiloBoton" onclick="encontrarMayor();" />
+                       <input type="button" value="ENCONTRAR MENOR"
+                     class="estiloBoton" onclick="encontrarMenor();" />
                       <input type="button" value="LIMPIAR"
                      class="estiloBoton" onclick="limpiar();" />
                 </div>

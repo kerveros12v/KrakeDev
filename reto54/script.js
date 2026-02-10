@@ -28,10 +28,18 @@ ejecutar = function () {
         else {
             alert("Registro Fallido");
         }
-        mostrarTextoDiv("tablaresultado", dibujarTabla());
-        let elMayor = esMayorArray();
-        mostrarTextoDiv("lblresultado", elMayor.nombre + " con edad " + elMayor.edad + " es el mayor");
+        dibujarTabla();
     }
+}
+encontrarMayor = function () {
+    let elMayor = determinarMayor();
+    mostrarTextoDiv("lblresultado", elMayor.nombre + " con edad " + elMayor.edad + " es el mayor");
+
+}
+encontrarMenor = function () {
+    let elMenor = determinarMenor();
+    mostrarTextoDiv("lblresultado", elMenor.nombre + " con edad " + elMenor.edad + " es el menor");
+
 }
 agregarPersona = function (persona) {
     let encontrado = false;
@@ -50,22 +58,19 @@ agregarPersona = function (persona) {
     return false;
 }
 dibujarTabla = function () {
-    let tabla = "<table><tr><th>Nombre</th><th>Edad</th></tr>";
+    let tabla = "<table><tr><th>Edad</th><th>Nombre</th></tr>";
     for (let i = 0; i < arrayPersonas.length; i++) {
-        tabla += "<tr><td>" + arrayPersonas[i].nombre + "</td><td>" + arrayPersonas[i].edad + "</td></tr>";
+        tabla += "<tr><td>" + arrayPersonas[i].edad + "</td><td>" + arrayPersonas[i].nombre + "</td></tr>";
     }
     tabla += "</table>";
-    return tabla;
+    mostrarTextoDiv("tablaresultado", tabla);
 }
 esNombreValido = function (dato) {
-    if (dato.length == 0) {
-        mostrarTexto("lblError1", "Ingrese el Producto");
+    if (dato.length < 3) {
+        mostrarTexto("lblError1", "Ingrese un minimo de 3 caracteres");
         return false;
     }
-    if (dato.length > 20) {
-        mostrarTexto("lblError1", "Maximo de caracteres 20");
-        return false;
-    }
+
     return true;
 }
 esCantidadValida = function (cantidad) {
@@ -79,17 +84,38 @@ esCantidadValida = function (cantidad) {
     }
     return true;
 }
-esMayorArray = function () {
+determinarMayor = function () {
     let mayor = { nombre: "", edad: 0 };
     let inicio = null;
     let final = null;
-    for (let i = 0; i < arrayPersonas.length; i++) {
-        inicio = arrayPersonas[i];
-        final = arrayPersonas[(arrayPersonas.length - 1) - i];
-        if (inicio.edad > mayor.edad) mayor = inicio;
-        if (final.edad > mayor.edad) mayor = final;
-        if (((arrayPersonas.length % 2 == 0) && (i == (arrayPersonas / 2))) || (((arrayPersonas.length - 1) % 2 == 0) && (i == (((arrayPersonas - 1) / 2) + 1)))) {
-            break;
+    if (arrayPersonas.length != 0) {
+        mayor = arrayPersonas[0];
+        for (let i = 0; i < arrayPersonas.length; i++) {
+            inicio = arrayPersonas[i];
+            final = arrayPersonas[(arrayPersonas.length - 1) - i];
+            if (inicio.edad > mayor.edad) mayor = inicio;
+            if (final.edad > mayor.edad) mayor = final;
+            if (((arrayPersonas.length % 2 == 0) && (i == (arrayPersonas / 2))) || (((arrayPersonas.length - 1) % 2 == 0) && (i == (((arrayPersonas - 1) / 2) + 1)))) {
+                break;
+            }
+        }
+    }
+    return mayor;
+}
+determinarMenor = function () {
+    let mayor = null;
+    let inicio = null;
+    let final = null;
+    if (arrayPersonas.length != 0) {
+        mayor = arrayPersonas[0];
+        for (let i = 0; i < arrayPersonas.length; i++) {
+            inicio = arrayPersonas[i];
+            final = arrayPersonas[(arrayPersonas.length - 1) - i];
+            if (inicio.edad < mayor.edad) mayor = inicio;
+            if (final.edad < mayor.edad) mayor = final;
+            if (((arrayPersonas.length % 2 == 0) && (i == (arrayPersonas / 2))) || (((arrayPersonas.length - 1) % 2 == 0) && (i == (((arrayPersonas - 1) / 2) + 1)))) {
+                break;
+            }
         }
     }
     return mayor;
