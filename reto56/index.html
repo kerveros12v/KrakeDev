@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="utilitarios.js"></script>
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+
+<body onload="cargar();">
+    <div class="menu">
+        <img src="imagenes/logoKrakeDev.png" width="250">
+        <a href="#" onclick="cargar();">Estudiante</a>
+        <a href="#" onclick="mostrarListaEstudiantes();">Lista de Estudiantes</a>
+        <a href="#" onclick="mostrarCursos();">Cursos</a>
+        <a href="#" onclick="mostrarResumen();">Resumen del Dia</a>
+    </div>
+    <div class="notificacion" id="notificacion">
+        <h1>Registro Exitoso</h1>
+    </div>
+    <div class="notificacionError" id="notificacionErrorRegistro">
+        <h1>Registro Exitoso</h1>
+    </div>
+    <div class="cuerpo" id="estudiante">
+        <h1>Datos del Estudinate</h1>
+        <br>
+        <div class="cuerpo-grupo">
+            <label class="etiquetas">Nombres y Apellidos</label>
+            <input type="text" name="" class="cajaTexto" id="txtNombre">
+            <div id="lblError1" class="error"></div>
+        </div>
+        <div class="cuerpo-grupo">
+            <label for="" class="etiquetas">Correo Electronico</label>
+            <input type="email" name="" class="cajaTexto" id="txtCorreo">
+            <div id="lblError2" class="error"></div>
+        </div>
+        <div class="cuerpo-grupo">
+            <label class="etiquetas">ID del Estudiante</label>
+            <input type="text" name="" class="cajaTexto" id="txtCedula">
+            <div id="lblError3" class="error"></div>
+        </div>
+        <div class="cuerpo-grupo">
+            <input type="button" class="boton" value="GUARDAR" onclick="ejecutarGuardarEstudiante();">
+
+        </div>
+    </div>
+    <div id="listaEstudiantes" class="cuerpolistEstudiantes">
+        <div class="cuerpo-grupo">
+            <label class="etiquetas">ID del Estudiante</label>
+            <input type="text" name="" class="cajaTexto" id="txtCedulaEliminar">
+            <div id="lblError4" class="error"></div>
+            <input type="button" class="botonError" value="ELIMINAR" onclick="ejecutarEliminarEstudiante();">
+        </div>
+        <div class="notificacionError" id="notificacionError">
+            <h1>Registro Exitoso</h1>
+        </div>
+        <div class="notificacion" id="notificacionTabla">
+            <h1>Registro Exitoso</h1>
+        </div>
+        <h1>Lista de Estudiantes</h1>
+        <div id="infoTabla"></div>
+    </div>
+    <div class="cuerpo" id="cursos">
+        <h1>Datos del Curso</h1>
+        <br>
+        <div class="cuerpo-grupo">
+            <label class="etiquetas">Nombre del Curso</label>
+            <input type="text" name="" class="cajaTexto" id="txtCurso">
+            <div id="lblError5" class="error"></div>
+        </div>
+        <div class="cuerpo-grupo">
+            <label class="etiquetas">Nombre del Docente responsable</label>
+            <input type="text" name="" class="cajaTexto" id="txtDocente">
+            <div id="lblError6" class="error"></div>
+        </div>
+        <div class="cuerpo-grupo">
+            <input type="button" class="boton" value="GUARDAR" onclick="ejecutarGuardarCurso();">
+
+        </div>
+
+    </div>
+    <div id="asistencia" class="cuerpolistEstudiantes">
+        <div class="cuerpo-grupo">
+            <label class="etiquetas">ID del Estudiante</label>
+            <input type="text" name="" class="cajaTexto" id="txtCedulaAsistencia">
+            <div id="lblError7" class="error"></div>
+
+
+        </div>
+        <div id="cuerpo-grupo">
+            <h3> Estado: </h3>
+            <label>Presente <input type="radio" name="rbtAsistencia" value="Presente" id=""></label>
+            <label>Ausente <input type="radio" name="rbtAsistencia" value="Ausente" id=""></label>
+        </div>
+        <input type="button" class="boton" value="Registrar" onclick="ejecutarRegistroAsistencia();">
+        <h2 id="lblasistencia"></h2>
+        <div id="infoTablaAsistencia"></div>
+    </div>
+
+    <div id="resumen" class="cuerpolistEstudiantes">
+        <h1>Resumen del Dia </h1>
+        <div id="infoTablaResumen"></div>
+        <div ><label>Numero de Estudiantes Existentes</label><h3 id="lbltotalestudiantes"></h3></div>
+    </div>
+</body>
+
+</html>
